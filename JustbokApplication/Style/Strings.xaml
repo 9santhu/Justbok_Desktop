@@ -1,0 +1,77 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:clr="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:JustbokApplication.Style">
+    
+    
+    <!--Common-->
+    <clr:String x:Key="SearchKey">Search</clr:String>
+    <clr:String x:Key="ResetKey">Reset</clr:String>
+    <clr:String x:Key="AddKey">Add</clr:String>
+    <clr:String x:Key="DeleteKey">Delete</clr:String>
+    <clr:String x:Key="EditKey">Edit</clr:String>
+    <clr:String x:Key="SearchIconKey">&#xf002;</clr:String>
+    <clr:String x:Key="PlusKey">&#xf067;</clr:String>
+    <clr:String x:Key="MinusKey">&#xf068;</clr:String>
+
+    <!--Pagination-->
+    <clr:String x:Key="FirstKey">&lt;&lt;</clr:String>
+    <clr:String x:Key="PreviousKey">&lt;</clr:String>
+    <clr:String x:Key="NextKey">&gt;</clr:String>
+    <clr:String x:Key="LastKey">&gt;&gt;</clr:String>
+    <clr:String x:Key="ToKey">to</clr:String>
+    <clr:String x:Key="OfKey">of</clr:String>
+    
+    <!--Role View-->
+    <clr:String x:Key="RoleSearchKey">Role Search</clr:String>
+    <clr:String x:Key="RoleKey">Role</clr:String>
+
+    <!--Branch View-->
+    <clr:String x:Key="BranchSearchKey">Branch Search</clr:String>
+    <clr:String x:Key="BranchKey">Branch</clr:String>
+    <clr:String x:Key="CityKey">City</clr:String>
+    <clr:String x:Key="StateKey">State</clr:String>
+    
+    <!-- Staff View-->
+    <clr:String x:Key="StaffSearchKey">Staff Search</clr:String>
+    <clr:String x:Key="StaffNameKey">Name</clr:String>
+    <clr:String x:Key="StaffRoleKey">Role</clr:String>
+    <clr:String x:Key="StaffMailKey">Mail</clr:String>
+    <clr:String x:Key="StaffPhoneKey">Phone</clr:String>
+
+    <!-- Product View-->
+    <clr:String x:Key="ProductSearchKey">Product Search</clr:String>
+    <clr:String x:Key="BrandNameKey">Brand Name</clr:String>
+    <clr:String x:Key="ProductNameKey">Product Name</clr:String>
+
+    <!-- Supplier View-->
+    <clr:String x:Key="SupplierSearchKey">Supplier Search</clr:String>
+    <clr:String x:Key="CompanyNameKey">Company Name</clr:String>
+    <clr:String x:Key="SupplierNameKey">Supplier Name</clr:String>
+
+    <!-- Category View-->
+    <clr:String x:Key="CategorySearchKey">Category Search</clr:String>
+    <clr:String x:Key="CategoryNameKey">Category</clr:String>
+    <clr:String x:Key="DescriptionKey">Description</clr:String>
+
+    <!-- ExpenseType View-->
+    <clr:String x:Key="ExpenseTypeSearchKey">Expense Type Search</clr:String>
+    <clr:String x:Key="ExpenseTypeNameKey">Name</clr:String>
+    <clr:String x:Key="ExpenseTypeDescriptionKey">Description</clr:String>
+
+    <!-- Task View-->
+    <clr:String x:Key="TaskSearchKey">Task Search</clr:String>
+    <clr:String x:Key="TaskTitleKey">Title</clr:String>
+    <clr:String x:Key="TaskDescriptionKey">Description</clr:String>
+    <clr:String x:Key="TaskFromDateKey">From Date</clr:String>
+    <clr:String x:Key="TaskToDateKey">To Date</clr:String>
+    
+    <!--Stock View-->
+    <clr:String x:Key="StockSearchKey">Stock Search</clr:String>
+    <clr:String x:Key="AddStockKey">Add Stock</clr:String>
+    <clr:String x:Key="RemoveStockKey">Remove Stock</clr:String>
+
+    <!--StockHistory View-->
+    <clr:String x:Key="StockHistorySearchKey">Stock History Search</clr:String>
+
+</ResourceDictionary>

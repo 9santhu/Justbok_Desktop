@@ -1,0 +1,136 @@
+﻿<UserControl x:Class="JustbokApplication.Views.WorkoutConfig.AddEditWorkoutPlanView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JustbokApplication.Views.Settings"
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             mc:Ignorable="d" HorizontalAlignment="Center" VerticalAlignment="Center"
+             xmlns:validation="clr-namespace:JustbokApplication.CustomValidationRules">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <Grid DataContext="{Binding Item,ValidatesOnDataErrors=True}" Name="grid" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition MaxHeight="300" Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox wpf:HintAssist.Hint="Plan Name" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                 Margin="0 6 0 0" FontSize="18" Grid.Column="0" VerticalAlignment="Top" Width="250" Validation.Error="Validation_Error">
+                <TextBox.Text>
+                    <Binding Path="PlanName"  UpdateSourceTrigger="PropertyChanged"  NotifyOnTargetUpdated="True" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <CheckBox x:Name="isActive" Margin="0,0,0,8" Grid.Column="2" Grid.Row="0" Width="250" Content="IsActive"
+                  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                  IsChecked="{Binding IsActive,NotifyOnTargetUpdated=True,Mode=TwoWay}"/>
+
+            <Grid Grid.Row="1" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Border BorderThickness="1.5" CornerRadius="5,5,0,0" BorderBrush="{StaticResource Border}" Grid.Row="0">
+                </Border>
+                <Border BorderThickness="1" CornerRadius="0,0,5,5" BorderBrush="{StaticResource Border}" Grid.Row="1">
+                    <DataGrid Name="PlanDetailsDataGrid" 
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding DietPlanDetails, NotifyOnTargetUpdated=True,Mode=TwoWay,UpdateSourceTrigger=LostFocus}"
+                          CanUserResizeColumns="False" CanUserResizeRows="False"
+                          CanUserReorderColumns="False" EnableRowVirtualization="True"
+                          Margin="2" IsSynchronizedWithCurrentItem="True">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn
+                                    Header="MealTime"
+                                    Binding="{Binding MealTime.MTime,StringFormat=t}"
+                                    Width="100"
+                                    IsReadOnly="True"/>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Monday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Monday" Text="{Binding D_Mon,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="2" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Tuesday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Tuesday" Text="{Binding D_Tue,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="3"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Wednesday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Wednesday" Text="{Binding D_Wed,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="4" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Thursday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Thursday" Text="{Binding D_Thu,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="5"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Friday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Friday" Text="{Binding D_Fri,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="6"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Saturday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Saturday" Text="{Binding D_Sat,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="7" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn IsReadOnly="False" Header="Sunday">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBox ToolTip="Sunday" Text="{Binding D_Sun,Mode=TwoWay,NotifyOnTargetUpdated=True,UpdateSourceTrigger=LostFocus}"
+                                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                                     Width="75" Margin="4,0" TabIndex="8" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </Grid>
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Content="Save" Command="{Binding SaveDialogCommand}"/>
+
+            <Button IsCancel="True" Margin="10,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding CancelDialogCommand}"
+                    Content="Cancel"/>
+        </WrapPanel>
+    </Grid>
+
+</UserControl>

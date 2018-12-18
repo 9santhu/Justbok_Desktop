@@ -1,0 +1,841 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JustbokApplication"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:Settings="clr-namespace:JustbokApplication.Views.Settings" x:Class="JustbokApplication.MainWindow"
+        mc:Ignorable="d" 
+        WindowStartupLocation="CenterScreen" WindowState="Maximized"
+        UseLayoutRounding="True" ContentRendered="Window_ContentRendered"
+        Title="Justbok" Closing="Window_Closing">
+    <Window.Resources>
+        <Storyboard x:Key="OpenMenu">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanelMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="180"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Dashboard">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="QuickPrint">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.9" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="grdControl">
+                <SplineThicknessKeyFrame KeyTime="0" Value="0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:0.5" Value="180,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="FindMember">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MemberShip">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="EnquiryList">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Attendence">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Calendar">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="WorkoutConfig">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="DietConfig">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="PointOfSale">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StockConfig">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Expense">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Setting">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="SMS">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Reports">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="-180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="CloseMenu">
+           
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="StackPanelMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="180"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="Margin" Storyboard.TargetName="grdControl">
+                <SplineThicknessKeyFrame KeyTime="0" Value="180,0,0,0"/>
+                <SplineThicknessKeyFrame KeyTime="0:0:1.0" Value="0,0,0,0"/>
+            </ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard x:Name="CloseMenu_BeginStoryboard" Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Background="{StaticResource HeaderBackground}">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="180"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="images/logo.png"  Margin="5" Width="170" VerticalAlignment="Center" Grid.Column="0"/>
+
+            <Button x:Name="ButtonCloseMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Click="ButtonCloseMenu_Click" Visibility="Collapsed" Grid.Column="1">
+                <materialDesign:PackIcon Kind="Close"/>
+            </Button>
+            <Button x:Name="ButtonOpenMenu" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Width="30" Height="30" Padding="0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5" Click="ButtonOpenMenu_Click" Grid.Column="1">
+                <materialDesign:PackIcon Kind="Menu"/>
+            </Button>
+
+            <Grid HorizontalAlignment="Right" Margin="0,0,20,0" Grid.Column="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="30"/>
+                </Grid.ColumnDefinitions>
+
+                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                          Width="200" Foreground="#FFFAFAFA" Grid.Column="0"
+                          VerticalAlignment="Center" HorizontalAlignment="Center" Name="cmbBranches"
+                          ItemsSource="{Binding Path=Branches}"
+                          SelectedItem="{Binding Path=SBranch}"
+                          SelectionChanged="cmbBranches_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Path=BranchCode}"/>
+                                <TextBlock Text=" - "/>
+                                <TextBlock Text="{Binding Path=BranchName}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+
+                <Button Style="{StaticResource MaterialDesignFlatButton}"
+                               VerticalAlignment="Center" VerticalContentAlignment="Center"
+                                Content="&#xf067; Add Enquiry" 
+                                FontFamily="{StaticResource FontAwesome}"
+                                Foreground="#FFFAFAFA" FontSize="12" Grid.Column="1" HorizontalAlignment="Center">
+                </Button>
+
+                <Button Style="{StaticResource MaterialDesignFlatButton}"
+                               VerticalAlignment="Center" VerticalContentAlignment="Center"
+                                Content="&#xf234; Add Member" 
+                                FontFamily="{StaticResource FontAwesome}"
+                                Foreground="#FFFAFAFA" FontSize="12" Grid.Column="2" HorizontalAlignment="Center">
+                </Button>
+
+                <materialDesign:PopupBox Margin="0,5,0,0" StaysOpen="True"
+                              Foreground="#FFFAFAFA" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Grid Width="300" Margin="8,8,8,8" Background="#605ca8">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="20" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <TextBox Grid.Row="0" FontFamily="{StaticResource FontAwesome}"
+                                               Text="Abdul Hameed" HorizontalAlignment="Stretch" 
+                                               VerticalAlignment="Stretch" VerticalContentAlignment="Center"
+                                             HorizontalContentAlignment="Center" IsReadOnly="True" BorderBrush="{x:Null}"
+                                             Foreground="#FFFAFAFA" FontSize="18" Name="LoggedAs">
+                        </TextBox>
+                        <Grid Grid.Row="1" Height="100">
+                            <Ellipse Height="75" Width="75" VerticalAlignment="Center">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="images/19.png"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                        <Grid Grid.Row="2" Background="#FFFAFAFA">
+                        </Grid>
+                        <Grid Grid.Row="3" Background="#FFFAFAFA">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Button Content="Profile" Grid.Row="1" Grid.Column="0"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}" Name="btnProfile"
+                                            Width="75" HorizontalAlignment="Left"/>
+                            <Button Content="Sign Out" Grid.Row="1" Grid.Column="1"
+                                            Style="{StaticResource MaterialDesignRaisedLightButton}" Name="btnSignout"
+                                            Width="100" HorizontalAlignment="Right"/>
+                        </Grid>
+                    </Grid>
+
+                </materialDesign:PopupBox>
+            </Grid>
+
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="StackPanelMenu" Width="180" HorizontalAlignment="Left" Margin="-180 0 0 0" 
+                    RenderTransformOrigin="0.5,0.5"
+                    VerticalAlignment="Stretch" Grid.Column="0" Background="{StaticResource MenuBackground}">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+                <ListView x:Name="lstmenu" Margin="0,0,0,0" Foreground="#FFFAFAFA" VerticalAlignment="Stretch">
+                    
+                    <ListViewItem x:Name="Dashboard" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Dashboard">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="ViewDashboard" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Dashboard" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="QuickPrint" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="QuickPrint">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Printer" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="QuickPrint" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="FindMember" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="FindMember">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountPlus" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Find Member" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="MemberShip" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Membership">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AccountMultiple" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Membership" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="memberleft"/>
+                        </StackPanel>
+
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="membershiplist" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="MembershipList">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Membership List" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="EnquiryList" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="EnquiryList">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Clock" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Enquiry List" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Attendence" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Attendence">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Email" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Attendence" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="attleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="attStaff" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="AttStaff">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Staff" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="attmem" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="AttMember">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Member" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Calendar" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Calendar">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Calendar" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Calendar" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="calleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="calconfig" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="AppointmentConfig">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Appointment Config" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="calapp" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="BookAppointment">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Book Appointment" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="calcal" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="InnerCalendar">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Calendar" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="calclass" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Class">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Classes" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="caleve" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Event">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Events" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="WorkoutConfig" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="WorkoutConfig">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Gavel" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Workout Config" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="workleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="work" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Workout">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Workout" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="workplan" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="WorkoutPlan">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Workout Plan" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="allocation" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Allocation">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Allocation" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="DietConfig" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="DietConfig">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Gavel" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Diet Config" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="dietleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="meal" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="MealTime">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Meal Time" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="dietplan" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="DietPlan">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Diet Plan" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="PointOfSale" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="POS">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Sale" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Point Of Sale" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="StockConfig" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="StockConfig">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Folder" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Stock Config" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="stockleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="ARStock" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="AddRemoveStock">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Add/Remove Stock" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="stockHistory" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="StockHistory">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Stock History" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Expense" Height="40" RenderTransformOrigin="0.5,0.5"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Expense">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="CurrencyInr" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Expense" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Setting" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Setting">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Settings" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Setting" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="settleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="role" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Role">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Role" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="staff" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Staff">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Staff" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="branch" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Branch">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Branch" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="product" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Product">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Product" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="supplier" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Supplier">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Supplier" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="packages" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Packages">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Packages" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="task" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Task">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Task" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="expensetype" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="ExpenseType">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Expense Type" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="category" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0" 
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Category">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Category" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="SMS" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Sms">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Email" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="SMS" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                            <materialDesign:PackIcon Kind="MenuLeft" Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Right" x:Name="smsleft"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="sendmsg" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="SendMessage">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Send Message" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="40" x:Name="msglog" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Padding="20,0,0,0"
+                                  MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="MessageLog">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Message Log" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="Reports" Height="40" RenderTransformOrigin="0.5,0.5" MouseUp="ListViewItem_MouseUp"  KeyUp="ListViewItem_KeyUp" Tag="Reports">
+                        <ListViewItem.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </ListViewItem.RenderTransform>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Calendar" Width="20" Height="20" VerticalAlignment="Center"/>
+                            <TextBlock Text="Reports" Margin="5,0,0,0" VerticalAlignment="Center" Width="100"/>
+                        </StackPanel>
+                    </ListViewItem>
+                </ListView>
+
+            </Grid>
+            <Grid Name="grdControl" Grid.Column="1" Width="Auto" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

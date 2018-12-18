@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="JustbokApplication.Controls.SingleSelectControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JustbokApplication.Controls"
+             mc:Ignorable="d" 
+             MaxHeight="400" Width="300">
+    <Grid Background="White">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid Name="multiSelectDataGrid" 
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  ItemsSource="{Binding DataItems, NotifyOnTargetUpdated=True,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                  CanUserResizeColumns="False" CanUserResizeRows="False"
+                  CanUserReorderColumns="False" EnableRowVirtualization="True"
+                  Margin="2">
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Description">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <RadioButton Width="250" Content="{Binding Name}"
+                  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                  IsChecked="{Binding IsSelected,NotifyOnTargetUpdated=True,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1" Margin="0,0,0,10">
+            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Content="Done" Command="{Binding SaveSubDialogCommand}"
+                    CommandParameter="{Binding SubDialogCommandParameter}"/>
+
+            <Button IsCancel="True" Margin="10,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding CancelSubDialogCommand}"
+                    Content="Cancel"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

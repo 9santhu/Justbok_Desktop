@@ -1,0 +1,273 @@
+﻿<UserControl x:Class="JustbokApplication.Views.ExpensesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:convertors="clr-namespace:JustbokApplication.Convertors"
+             xmlns:eventBinding="clr-namespace:JustbokApplication.EventBinding"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <convertors:BoolToStringConvertor x:Key="booltostringconvertor"/>
+        <Storyboard x:Key="OnVisible">
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnPlus" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnMinus" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Search" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnClosing">
+
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnPlus" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="btnMinus" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames BeginTime="00:00:00" Storyboard.TargetName="Search" 
+                                           Storyboard.TargetProperty="(UIElement.Visibility)">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnPlus">
+            <BeginStoryboard Storyboard="{StaticResource OnVisible}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="btnMinus">
+            <BeginStoryboard Storyboard="{StaticResource OnClosing}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <Grid Background="{StaticResource GridBackground}" >
+        <materialDesign:DialogHost IsOpen="{Binding IsDialogOpen}"
+                                   DialogContent="{Binding DialogContent}">
+            <Grid Width="Auto" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+                <!-- Add Button -->
+                <Button Margin="10" Grid.Row="0" HorizontalAlignment="Right"
+                Content="{StaticResource AddKey}"
+                Command="{Binding OpenDialogCommand}"
+                CommandParameter="0" ToolTip="Add Expense"/>
+
+                <!-- Search Panel -->
+                <Grid Grid.Row="1" Margin="0,0,0,15">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="1.5" CornerRadius="5,5,0,0" BorderBrush="{StaticResource Border}" Grid.Row="0">
+                    </Border>
+
+                    <Border BorderThickness="1" CornerRadius="0,0,5,5" BorderBrush="{StaticResource Border}" Grid.Row="1">
+                        <Grid HorizontalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{StaticResource SearchIconKey}" FontFamily="{StaticResource FontAwesome}"
+                               Foreground="{StaticResource BlackForeground}" FontSize="18" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center"
+                               Grid.Column="0" Grid.Row="0" Margin="10"/>
+
+                            <TextBlock Text="Expense Search" Foreground="{StaticResource BlackForeground}" FontSize="18" 
+                               HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0" Grid.Column="1"/>
+
+                            <Button Content="{StaticResource MinusKey}" FontFamily="{StaticResource FontAwesome}" 
+                        Foreground="{StaticResource BlackForeground}" FontSize="14"
+                        HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed"
+                        CommandParameter="0" Name="btnMinus"
+                        Grid.Row="0" Grid.Column="2"/>
+
+                            <Button Content="{StaticResource PlusKey}" FontFamily="{StaticResource FontAwesome}" 
+                        Foreground="{StaticResource BlackForeground}" FontSize="14"
+                        HorizontalAlignment="Right" VerticalAlignment="Center" 
+                        Visibility="Visible" Background="{x:Null}" BorderBrush="{x:Null}"
+                        CommandParameter="1" Name="btnPlus"
+                            Grid.Row="0" Grid.Column="2"/>
+
+                            <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="0" BorderBrush="{StaticResource Border}" 
+                            BorderThickness="0,1,0,0">
+                            </Border>
+
+                            <!-- Search Options -->
+                            <WrapPanel VerticalAlignment="Stretch" HorizontalAlignment="Stretch" 
+                           Name="Search" Margin="10" Visibility="Collapsed" RenderTransformOrigin="0.5,0.5"
+                               Orientation="Horizontal"
+                               Grid.Row="1" Grid.ColumnSpan="3">
+                                <WrapPanel.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform/>
+                                        <SkewTransform/>
+                                        <RotateTransform/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </WrapPanel.RenderTransform>
+                                <ComboBox Style="{StaticResource MaterialDesignFloatingHintComboBox}" Width="200" Foreground="Black" 
+                                          Margin="20 12 0 0" ItemsSource="{Binding Path=ExpenseTypes}" DisplayMemberPath="TypeName"
+                                          SelectedItem="{Binding ExpenseTypeSearch,Mode=TwoWay}" materialDesign:HintAssist.Hint="Expense Type"
+                                          IsSynchronizedWithCurrentItem="True" TabIndex="4">
+                                </ComboBox>
+                                <TextBox x:Name="Description"  materialDesign:HintAssist.Hint="Description" 
+                                 Width="200" Margin="20,7,0,0" Style="{StaticResource MaterialDesignFloatingHintTextBox}" TabIndex="1"
+                                         Text="{Binding DescriptionSearch,Mode=TwoWay}"/>
+                                <DatePicker x:Name="FromDate" materialDesign:HintAssist.Hint="{StaticResource TaskFromDateKey}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                            FontSize="18" Margin="20,7,0,0" Width="200" TabIndex="2"
+                                            SelectedDate="{Binding FromDate,NotifyOnTargetUpdated=True,Mode=TwoWay,StringFormat=d}"/>
+                                <DatePicker x:Name="ToDate" materialDesign:HintAssist.Hint="{StaticResource TaskToDateKey}" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                            FontSize="18" Margin="20,7,0,0" Width="200" TabIndex="3"
+                                            SelectedDate="{Binding ToDate,NotifyOnTargetUpdated=True,Mode=TwoWay,StringFormat=d}"/>
+                                <Button Content="{StaticResource SearchKey}" Margin="20,10,0,0" Name="btnSearch"
+                                Style="{StaticResource MaterialDesignRaisedDarkButton}" TabIndex="4"
+                                Command="{Binding SearchCommand}"/>
+                                <Button Content="{StaticResource ResetKey}" Margin="20,10,0,0"
+                                Style="{StaticResource MaterialDesignRaisedLightButton}" Name="btnReset" TabIndex="5"
+                                Command="{Binding ResetCommand}"/>
+
+                            </WrapPanel>
+                        </Grid>
+                    </Border>
+                </Grid>
+
+                <!-- Datagrid -->
+                <Grid Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Border BorderThickness="1.5" CornerRadius="5,5,0,0" BorderBrush="{StaticResource Border}" Grid.Row="0">
+                    </Border>
+                    <Border BorderThickness="1" CornerRadius="0,0,5,5" BorderBrush="{StaticResource Border}" Grid.Row="1">
+                        <DataGrid Name="ExpensesDataGrid" 
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          ItemsSource="{Binding Items, NotifyOnTargetUpdated=True}"
+                          Sorting="{eventBinding:EventBinding Command=DataGridSortCommand,CommandParameter=$e}"
+                          TargetUpdated="{eventBinding:EventBinding Command=DataGridTargetUpdatedCommand, CommandParameter=$this}"
+                          Loaded="{eventBinding:EventBinding Command=DataGridLoadedCommand, CommandParameter=$this}"
+                          CanUserResizeColumns="False" CanUserResizeRows="False"
+                          CanUserReorderColumns="False" EnableRowVirtualization="True"
+                          Margin="2">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn
+                                    Header="Expense Type"
+                                    Binding="{Binding ExpenseType.TypeName}"
+                                    Width="*"
+                                    SortMemberPath="ExpenseType"
+                                    IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                    Header="Expense Amount"
+                                    Binding="{Binding ExpenseAmount}"
+                                    Width="*" 
+                                    SortMemberPath="ExpenseAmount"
+                                    SortDirection="Ascending"
+                                    IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                    Header="Expense Date"
+                                    Binding="{Binding ExpenseDate}"
+                                    Width="*" 
+                                    SortMemberPath="ExpenseDate"
+                                    IsReadOnly="True"/>
+                                <DataGridTextColumn
+                                    Header="Description"
+                                    Binding="{Binding ExpenseDescription}"
+                                    Width="*" 
+                                    SortMemberPath="ExpenseDescription"
+                                    IsReadOnly="True"/>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Margin="4,0" Content="{StaticResource EditKey}" CommandParameter="{Binding ExpenseId}" Name="btnEdit" ToolTip="Edit Expense"
+                                            Click="{eventBinding:EventBinding Command=EditCommand,CommandParameter=$this.CommandParameter}" />
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                                <DataGridTemplateColumn>
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Margin="4,0" Content="{StaticResource DeleteKey}" CommandParameter="{Binding ExpenseId}" Name="btnDelete"
+                                                    Click="{eventBinding:EventBinding Command=DeleteCommand,CommandParameter=$this.CommandParameter}" 
+                                                    Style="{StaticResource MaterialDesignRaisedDeleteDarkButton}" ToolTip="Delete Expense">
+                                            </Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+                </Grid>
+
+                <!-- Pagination Grid -->
+                <Grid Grid.Row="3"
+            Margin="4"
+            HorizontalAlignment="Center" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Button                
+                Margin="4,0"
+                Content="{StaticResource FirstKey}"
+                Command="{Binding FirstCommand}" Grid.Column="0"/>
+                    <Button
+                Margin="4,0"
+                Content="{StaticResource PreviousKey}"
+                Command="{Binding PreviousCommand}" Grid.Column="1"/>
+                    <StackPanel
+                VerticalAlignment="Center"
+                Orientation="Horizontal" Grid.Column="2">
+                        <TextBlock
+                    Text="{Binding Start}"/>
+                        <TextBlock
+                    Text="{StaticResource ToKey}" Padding="3,0"/>
+                        <TextBlock
+                    Text="{Binding End}"/>
+                        <TextBlock
+                    Text="{StaticResource OfKey}" Padding="3,0"/>
+                        <TextBlock
+                    Text="{Binding TotalItems}"/>
+                    </StackPanel>
+                    <Button
+                Margin="4,0"
+                Content="{StaticResource NextKey}"
+                Command="{Binding NextCommand}" Grid.Column="3"/>
+                    <Button
+                Margin="4,0"
+                Content="{StaticResource LastKey}"
+                Command="{Binding LastCommand}" Grid.Column="4"/>
+                </Grid>
+            </Grid>
+        </materialDesign:DialogHost>
+    </Grid>
+</UserControl>

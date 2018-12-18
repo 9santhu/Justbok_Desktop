@@ -1,0 +1,55 @@
+﻿<UserControl x:Class="JustbokApplication.Views.Settings.AddEditExpenseTypeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JustbokApplication.Views.Settings"
+             xmlns:wpf="clr-namespace:MaterialDesignThemes.Wpf;assembly=MaterialDesignThemes.Wpf"
+             mc:Ignorable="d" HorizontalAlignment="Center" VerticalAlignment="Center"
+             xmlns:validation="clr-namespace:JustbokApplication.CustomValidationRules">
+    <Grid Margin="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+        <Grid DataContext="{Binding Item,ValidatesOnDataErrors=True}" Name="grid" Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="75"/>
+                <RowDefinition Height="75"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox wpf:HintAssist.Hint="Expense Type Name" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                 Margin="0 6 0 0" FontSize="18" Grid.Column="0" VerticalAlignment="Top" Width="250" Validation.Error="Validation_Error">
+                <TextBox.Text>
+                    <Binding Path="TypeName"  UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <TextBox wpf:HintAssist.Hint="Expense Type Description" Style="{DynamicResource MaterialDesignFloatingHintTextBox}"
+                 Margin="0 6 0 0" FontSize="18" Grid.Column="2" VerticalAlignment="Top" Width="250" Validation.Error="Validation_Error">
+                <TextBox.Text>
+                    <Binding Path="TypeDescription"  UpdateSourceTrigger="PropertyChanged"  NotifyOnTargetUpdated="True" ValidatesOnDataErrors="True" NotifyOnValidationError="True" Mode="TwoWay">
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+
+            <CheckBox x:Name="isActive" Margin="0,0,0,8" Grid.Column="0" Grid.Row="1" Width="250" Content="IsActive"
+                  VerticalContentAlignment="Center" HorizontalContentAlignment="Left"
+                  IsChecked="{Binding IsActive,NotifyOnTargetUpdated=True,Mode=TwoWay}"/>
+           
+        </Grid>
+        <WrapPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+            <Button IsDefault="True" Style="{DynamicResource MaterialDesignFlatButton}"
+                    Content="Save" Command="{Binding SaveDialogCommand}"/>
+
+            <Button IsCancel="True" Margin="10,0,0,0" Style="{DynamicResource MaterialDesignFlatButton}" Command="{Binding CancelDialogCommand}"
+                    Content="Cancel"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

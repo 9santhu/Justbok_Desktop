@@ -1,0 +1,20 @@
+﻿JustbokApplication
+
+
+winexe
+C#
+.cs
+D:\Justbok Desktop Version\JustBok_Desktop\JustbokApplication\obj\Debug\
+JustbokApplication
+none
+false
+DEBUG;TRACE
+D:\Justbok Desktop Version\JustBok_Desktop\JustbokApplication\App.xaml
+422124122644
+3-1120947828
+129-863377229
+22-2061388098
+Controls\SingleSelectControl.xaml;Controls\MultiSelectControl.xaml;LoaderControl.xaml;Loader\Block.xaml;Loader\LoadingAnimation.xaml;LoginWindow.xaml;MainWindow.xaml;Style\Color.xaml;Style\Strings.xaml;Style\_shared.xaml;Views\WorkoutConfig\AddEditWorkoutPlanView.xaml;Views\WorkoutConfig\AddEditWorkoutView.xaml;Views\WorkoutConfig\WorkoutPlanView.xaml;Views\WorkoutConfig\WorkoutView.xaml;Views\DietConfig\AddEditDietPlanView.xaml;Views\DietConfig\AddEditMealTimeView.xaml;Views\DietConfig\DietPlanView.xaml;Views\DietConfig\MealTimeView.xaml;Views\ExpensesView.xaml;Views\AddEditExpense.xaml;Views\StockConfig\StockHistoryView.xaml;Views\StockConfig\StockView.xaml;Views\WelcomeView.xaml;Views\DeleteView.xaml;Views\Settings\AddEditPackageView.xaml;Views\Settings\AddEditTaskView.xaml;Views\Settings\AddEditExpenseTypeView.xaml;Views\Settings\AddEditCategoryView.xaml;Views\Settings\AddEditSupplierView.xaml;Views\Settings\AddEditProductView.xaml;Views\Settings\AddEditStaffView.xaml;Views\Settings\AddEditBranchView.xaml;Views\Settings\AddEditRoleView.xaml;Views\Settings\PackageView.xaml;Views\Settings\TaskView.xaml;Views\Settings\ExpenseTypeView.xaml;Views\Settings\CategoryView.xaml;Views\Settings\SupplierView.xaml;Views\Settings\ProductView.xaml;Views\Settings\BranchView.xaml;Views\Settings\RoleView.xaml;Views\Settings\StaffView.xaml;
+
+False
+

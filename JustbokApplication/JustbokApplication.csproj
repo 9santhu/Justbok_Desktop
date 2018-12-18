@@ -1,0 +1,535 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{09A5D5D9-84BC-4354-BB9F-6E2050833E6E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>JustbokApplication</RootNamespace>
+    <AssemblyName>JustbokApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>540E6E5EEBAE030F3A89DC5CB8C4AD32B7680F37</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>JustbokApplication_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>images\justbok.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ErrorLog, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\ErrorLog.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignColors, Version=1.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\MaterialDesignColors.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf, Version=1.2.0.34880, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Dlls\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Speech" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ToastNotifications, Version=2.2.5.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.2.2.5\lib\net40\ToastNotifications.dll</HintPath>
+    </Reference>
+    <Reference Include="ToastNotifications.Messages, Version=2.2.5.0, Culture=neutral, PublicKeyToken=e89d9d7314a7c797, processorArchitecture=MSIL">
+      <HintPath>..\packages\ToastNotifications.Messages.2.2.5\lib\net40\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Controls\SingleSelectControl.xaml.cs">
+      <DependentUpon>SingleSelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MultiSelectControl.xaml.cs">
+      <DependentUpon>MultiSelectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Convertors\BoolToStringConvertor.cs" />
+    <Compile Include="CustomValidationAttributes\DateTimeAttribute.cs" />
+    <Compile Include="CustomValidationAttributes\ExcludeCharAttribute.cs" />
+    <Compile Include="CustomValidationRules\NumericValidationRule.cs" />
+    <Compile Include="CustomValidationRules\CurrencyValidationRule.cs" />
+    <Compile Include="CustomValidationRules\MaxLengthValidationRule.cs" />
+    <Compile Include="CustomValidationRules\ExcludeCharValidationRule.cs" />
+    <Compile Include="CustomValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="Data\WorkoutDao.cs" />
+    <Compile Include="Data\UnitDao.cs" />
+    <Compile Include="Data\DietPlanDao.cs" />
+    <Compile Include="Data\MealTimeDao.cs" />
+    <Compile Include="Data\StockDao.cs" />
+    <Compile Include="Data\ExpenseModeDao.cs" />
+    <Compile Include="Data\ExpenseDao.cs" />
+    <Compile Include="Data\PackageDao.cs" />
+    <Compile Include="Data\TaskDao.cs" />
+    <Compile Include="Data\ExpenseTypeDao.cs" />
+    <Compile Include="Data\CategoryDao.cs" />
+    <Compile Include="Data\SupplierDao.cs" />
+    <Compile Include="Data\ProductDao.cs" />
+    <Compile Include="Data\ShiftDao.cs" />
+    <Compile Include="Data\BranchDao.cs" />
+    <Compile Include="EventBinding\BindableBase.cs" />
+    <Compile Include="EventBinding\DelegateCommand.cs" />
+    <Compile Include="EventBinding\DependencyObjectExtensions.cs" />
+    <Compile Include="EventBinding\EventBindingExtension.cs" />
+    <Compile Include="EventBinding\ViewModelBase.cs" />
+    <Compile Include="EventBinding\WeakEventHandlerManager.cs" />
+    <Compile Include="Helpers\Speak.cs" />
+    <Compile Include="Helpers\Toaster.cs" />
+    <Compile Include="Helpers\PropertyChanged.cs" />
+    <Compile Include="Helpers\SessionManager.cs" />
+    <Compile Include="Data\RoleDao.cs" />
+    <Compile Include="Data\LoginDao.cs" />
+    <Compile Include="Data\StaffDao.cs" />
+    <Compile Include="Data\Db\Db.cs" />
+    <Compile Include="Data\Db\DbParam.cs" />
+    <Compile Include="Helpers\CommonFunctions.cs" />
+    <Compile Include="Helpers\Invoker.cs" />
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Workout.cs" />
+    <Compile Include="Models\Unit.cs" />
+    <Compile Include="Models\DietPlanDetails.cs" />
+    <Compile Include="Models\DietPlan.cs" />
+    <Compile Include="Models\MealTime.cs" />
+    <Compile Include="Models\Expenses.cs" />
+    <Compile Include="Models\ExpenseMode.cs" />
+    <Compile Include="Models\Package.cs" />
+    <Compile Include="Models\Stock.cs" />
+    <Compile Include="Models\Task.cs" />
+    <Compile Include="Models\IntervalType.cs" />
+    <Compile Include="Models\ExpenseType.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Shift.cs" />
+    <Compile Include="Models\Branch.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\Node.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Notification\PropertyChangedNotification.cs" />
+    <Compile Include="ViewModel\ExpenseViewModel.cs" />
+    <Compile Include="ViewModel\DietPlanViewModel.cs" />
+    <Compile Include="ViewModel\WorkoutViewModel.cs" />
+    <Compile Include="ViewModel\PackageViewModel.cs" />
+    <Compile Include="ViewModel\StockHistoryViewModel.cs" />
+    <Compile Include="ViewModel\StockViewModel.cs" />
+    <Compile Include="ViewModel\MealTimeViewModel.cs" />
+    <Compile Include="ViewModel\TaskViewModel.cs" />
+    <Compile Include="ViewModel\ExpenseTypeViewModel.cs" />
+    <Compile Include="ViewModel\CategoryViewModel.cs" />
+    <Compile Include="ViewModel\SupplierViewModel.cs" />
+    <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\BranchViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\RoleViewModel.cs" />
+    <Compile Include="ViewModel\StaffViewModel.cs" />
+    <Page Include="Controls\SingleSelectControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\MultiSelectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoaderControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loader\Block.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Loader\LoadingAnimation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Helpers\IOHelper.cs" />
+    <Compile Include="LoaderControl.xaml.cs">
+      <DependentUpon>LoaderControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Loader\Block.xaml.cs">
+      <DependentUpon>Block.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Loader\LoadingAnimation.xaml.cs">
+      <DependentUpon>LoadingAnimation.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Result.cs" />
+    <Compile Include="Models\Staff.cs" />
+    <Compile Include="Views\WorkoutConfig\AddEditWorkoutPlanView.xaml.cs">
+      <DependentUpon>AddEditWorkoutPlanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkoutConfig\AddEditWorkoutView.xaml.cs">
+      <DependentUpon>AddEditWorkoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkoutConfig\WorkoutPlanView.xaml.cs">
+      <DependentUpon>WorkoutPlanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WorkoutConfig\WorkoutView.xaml.cs">
+      <DependentUpon>WorkoutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DietConfig\AddEditDietPlanView.xaml.cs">
+      <DependentUpon>AddEditDietPlanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DietConfig\AddEditMealTimeView.xaml.cs">
+      <DependentUpon>AddEditMealTimeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DietConfig\DietPlanView.xaml.cs">
+      <DependentUpon>DietPlanView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DietConfig\MealTimeView.xaml.cs">
+      <DependentUpon>MealTimeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ExpensesView.xaml.cs">
+      <DependentUpon>ExpensesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AddEditExpense.xaml.cs">
+      <DependentUpon>AddEditExpense.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StockConfig\StockHistoryView.xaml.cs">
+      <DependentUpon>StockHistoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StockConfig\StockView.xaml.cs">
+      <DependentUpon>StockView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomeView.xaml.cs">
+      <DependentUpon>WelcomeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DeleteView.xaml.cs">
+      <DependentUpon>DeleteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditPackageView.xaml.cs">
+      <DependentUpon>AddEditPackageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditTaskView.xaml.cs">
+      <DependentUpon>AddEditTaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditExpenseTypeView.xaml.cs">
+      <DependentUpon>AddEditExpenseTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditCategoryView.xaml.cs">
+      <DependentUpon>AddEditCategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditSupplierView.xaml.cs">
+      <DependentUpon>AddEditSupplierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditProductView.xaml.cs">
+      <DependentUpon>AddEditProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditStaffView.xaml.cs">
+      <DependentUpon>AddEditStaffView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditBranchView.xaml.cs">
+      <DependentUpon>AddEditBranchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\AddEditRoleView.xaml.cs">
+      <DependentUpon>AddEditRoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\PackageView.xaml.cs">
+      <DependentUpon>PackageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\TaskView.xaml.cs">
+      <DependentUpon>TaskView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\ExpenseTypeView.xaml.cs">
+      <DependentUpon>ExpenseTypeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\CategoryView.xaml.cs">
+      <DependentUpon>CategoryView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\SupplierView.xaml.cs">
+      <DependentUpon>SupplierView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\ProductView.xaml.cs">
+      <DependentUpon>ProductView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\BranchView.xaml.cs">
+      <DependentUpon>BranchView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\RoleView.xaml.cs">
+      <DependentUpon>RoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings\StaffView.xaml.cs">
+      <DependentUpon>StaffView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\Command\RelayCommand.cs" />
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Style\Color.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\Strings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Style\_shared.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkoutConfig\AddEditWorkoutPlanView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkoutConfig\AddEditWorkoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkoutConfig\WorkoutPlanView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WorkoutConfig\WorkoutView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DietConfig\AddEditDietPlanView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DietConfig\AddEditMealTimeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DietConfig\DietPlanView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DietConfig\MealTimeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ExpensesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AddEditExpense.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StockConfig\StockHistoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\StockConfig\StockView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WelcomeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DeleteView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditPackageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditTaskView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditExpenseTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditCategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditSupplierView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditStaffView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditBranchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\AddEditRoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Settings\PackageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\TaskView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\ExpenseTypeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\CategoryView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\SupplierView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\ProductView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\BranchView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\RoleView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings\StaffView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Resource Include="Fonts\fontawesome-webfont.ttf" />
+    <None Include="JustbokApplication_TemporaryKey.pfx" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dlls\ErrorLog.dll" />
+    <Content Include="Dlls\MaterialDesignColors.dll" />
+    <Content Include="Dlls\MaterialDesignThemes.Wpf.dll" />
+    <Resource Include="images\login-bg.png" />
+    <Resource Include="images\justbok.ico" />
+    <Resource Include="images\19.png" />
+    <Resource Include="images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
